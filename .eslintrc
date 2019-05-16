@@ -1,0 +1,59 @@
+{
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 7,
+    "sourceType": "module"
+  },
+  "rules": {
+    "import/prefer-default-export": 0,
+    "arrow-body-style": 0,
+    "no-use-before-define":"off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/extensions": 0,
+    "prefer-const": 0,
+    "object-shorthand": 1,
+    "import/first": 0,
+    "no-unused-expressions": [
+      1,
+      {
+        "allowShortCircuit": true
+      }
+    ],
+    "no-empty": [
+      2,
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "default-case": 0,
+    "no-case-declarations": 0,
+    "no-script-url": 0,
+    "semi": 0,
+    "no-unused-vars": 1,
+    "global-require": 0,
+    "react/jsx-uses-react": 2,
+    "react/jsx-uses-vars": 2,
+    "import/no-unresolved": 0,
+    "no-unneeded-ternary": 1,
+    "no-nested-ternary": 1,
+    "max-len": [
+      2,
+      150
+    ],
+    "no-return-assign": 0,
+    "yoda": "off",
+    "dot-notation": 1,
+    "no-param-reassign": 1,
+    "no-continue": 0,
+    "func-names": 1
+  }
+}
