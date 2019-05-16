@@ -1,5 +1,5 @@
 # vue-kit
-
+ > 基于 vue cli3的脚手架，集成了vuex，request，自定义eslint等功能优化
 ## Project setup
 ```
 npm install
