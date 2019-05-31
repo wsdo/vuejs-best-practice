@@ -4,6 +4,15 @@ function resolve(dir) {
   return path.join(__dirname, dir)
 }
 module.exports = {
+  css: {
+    modules: true,
+    loaderOptions: {
+      css: {
+        localIdentName: '[name]-[hash:base64:4]',
+        camelCase: 'only'
+      }
+    }
+  },
   devServer: {
     port: 8080,
     disableHostCheck: true,
