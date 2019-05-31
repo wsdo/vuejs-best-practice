@@ -16,10 +16,10 @@ const mutations = {
 }
 
 const actions = {
-  increment ({ state, commit }) {
+  increment({ state, commit }) {
     commit('INCREMENT')
   },
-  decrement ({ state, commit }) {
+  decrement({ state, commit }) {
     commit('DECREMENT')
   }
 }

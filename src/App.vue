@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <Stark msg="Welcome to Your Vue.js App"/>
+    <Stark msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import Stark from './components/Stark.vue'
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     HelloWorld,
     Stark

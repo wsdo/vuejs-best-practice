@@ -10,14 +10,14 @@ const getters = {
 
 const mutations = {
   ARTICLE_LIST: (state, data) => {
-    console.log('data',data);
+    console.log('data', data);
     state.articleList = data.data.article
   }
 }
 
 const actions = {
   getArticleList(data, id) {
-    console.log('dataqq',data)
+    console.log('dataqq', data)
     return axios.get(`v1/article/list`).then((response) => {
       // if (response.statusText === 'OK') {
       // commit('ARTICLE_LIST', response)

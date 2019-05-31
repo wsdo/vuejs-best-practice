@@ -17,11 +17,11 @@ module.exports = {
     port: 8080,
     disableHostCheck: true,
     proxy: {
-      '/v1': { //代理api
-        target: 'http://api.shudong.wang/v1', //服务器api地址-
-        changeOrigin: true, //是否跨域
+      '/v1': { // 代理api
+        target: 'http://api.shudong.wang/v1', // 服务器api地址-
+        changeOrigin: true, // 是否跨域
         ws: true, // proxy websockets
-        pathRewrite: { //重写路径
+        pathRewrite: { // 重写路径
           '^/v1': ''
         }
       }

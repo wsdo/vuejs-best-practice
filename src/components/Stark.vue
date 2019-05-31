@@ -51,7 +51,7 @@ export default {
     })
   },
   methods: {
-    getArticle () {
+    getArticle() {
       this.$store.dispatch('getArticleList').then(res => {
         console.log('this.article', this.article)
       })
