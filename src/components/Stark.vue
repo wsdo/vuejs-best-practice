@@ -29,7 +29,7 @@
     </ul>
 
     <button @click="getArticle">
-      获取文章列表
+      获取文章列表1
     </button>
     <div v-for="(item, index) in article" :key="index">
       <div>{{ item }}</div>
