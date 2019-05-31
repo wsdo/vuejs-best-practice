@@ -28,16 +28,17 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
 
-
-    <button @click="getArticle"> 获取文章列表 </button>
+    <button @click="getArticle">
+      获取文章列表
+    </button>
     <div v-for="(item, index) in article" :key="index">
-      <div>{{item}}</div>
+      <div>{{ item }}</div>
     </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters } from 'vuex';
 import stark from './stark.css'
 export default {
   name: 'HelloWorld',
@@ -46,13 +47,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      article: "getArticleListState"
+      article: 'getArticleListState'
     })
   },
   methods: {
-    getArticle(){
-      this.$store.dispatch("getArticleList").then(res=>{
-        console.log('this.article',this.article)
+    getArticle () {
+      this.$store.dispatch('getArticleList').then(res => {
+        console.log('this.article', this.article)
       })
     }
   }
