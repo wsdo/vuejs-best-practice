@@ -9,7 +9,7 @@ module.exports = {
   globals: {
     location: true
   },
-  extends: ['vue', 'standard', 'plugin:vue/recommended', 'plugin:vue/essential'],
+  extends: ['plugin:vue/recommended', 'plugin:vue/essential'],
   plugins: ['import', 'vue'],
   parserOptions: {
     parser: 'babel-eslint',
@@ -34,7 +34,6 @@ module.exports = {
         allowShortCircuit: true
       }
     ],
-
     'no-empty': [
       2,
       {

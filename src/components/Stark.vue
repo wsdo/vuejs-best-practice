@@ -39,9 +39,14 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import HelloWorld from '@/components/HelloWorld.vue'
+
 import stark from './stark.css'
 export default {
   name: 'HelloWorld',
+  components: {
+    HelloWorld
+  },
   props: {
     msg: String
   },
