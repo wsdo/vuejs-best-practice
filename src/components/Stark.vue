@@ -50,6 +50,9 @@ export default {
   props: {
     msg: String
   },
+  created() {
+    console.log('当前的环境是',process.env.ENV)
+  },
   computed: {
     ...mapGetters({
       article: 'getArticleListState'
