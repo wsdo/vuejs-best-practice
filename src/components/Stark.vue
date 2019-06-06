@@ -51,7 +51,7 @@ export default {
     msg: String
   },
   created() {
-    console.log('当前的环境是',process.env.ENV)
+    console.log('当前的环境是',process.env)
   },
   computed: {
     ...mapGetters({
