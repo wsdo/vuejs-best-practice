@@ -36,7 +36,7 @@ module.exports = {
     //   chunks: 'all'
     // })
     config.optimization.splitChunks({
-            // chunks: 'async',
+      // chunks: 'async',
       // minSize: 300,
 
       // minChunks: 1,
