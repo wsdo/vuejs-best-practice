@@ -3,6 +3,8 @@
 #get highest tag number
 VERSION=`git describe --abbrev=0 --tags`
 
+arg1=$1
+
 #replace . with space so can split into an array
 VERSION_BITS=(${VERSION//./ })
 
@@ -24,7 +26,7 @@ NEEDS_TAG=`git describe --contains $GIT_COMMIT`
 #only tag if no tag already (would be better if the git describe command above could have a silent option)
 if [ -z "$NEEDS_TAG" ]; then
     echo "Tagged with $NEW_TAG (Ignoring fatal:cannot describe - this means commit is untagged) "
-    git tag $NEW_TAG
+    git tag $NEW_TAG -m"${arg1}"
     git push --tags
 else
     echo "Already a tag on this commit"
