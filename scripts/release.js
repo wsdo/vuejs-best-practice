@@ -111,7 +111,7 @@ const release = async() => {
     lernaArgs.push('--force-publish')
   }
 
-  await execa(require.resolve('lerna/cli'), lernaArgs, { stdio: 'inherit' })
+  // await execa(require.resolve('lerna/cli'), lernaArgs, { stdio: 'inherit' })
 
   // publish version marker after all other packages are published
   await execa(
