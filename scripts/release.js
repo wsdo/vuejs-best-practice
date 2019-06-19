@@ -37,16 +37,21 @@ const execa = require('execa')
 const semver = require('semver')
 const inquirer = require('inquirer')
 const { syncDeps } = require('./syncDeps')
+const { exec, execSync } = require('child_process')
+
 // const { buildEditorConfig } = require('./buildEditorConfig')
 
-const curVersion = require('../package.json').version
+// const curVersion = require('../package.json').version
+const curVersion = execSync(`git describe --abbrev=0 --tags`, { encoding: 'utf8' }).trim()
 
 const release = async() => {
   console.log(`Current version: ${curVersion}`)
 
   const bumps = ['patch', 'minor', 'major', 'prerelease']
   const versions = {}
-  bumps.forEach(b => { versions[b] = semver.inc(curVersion, b) })
+  bumps.forEach(b => {
+    versions[b] = semver.inc(curVersion, b)
+  })
   const bumpChoices = bumps.map(b => ({ name: `${b} (${versions[b]})`, value: b }))
 
   const { bump, customVersion } = await inquirer.prompt([
@@ -54,10 +59,7 @@ const release = async() => {
       name: 'bump',
       message: 'Select release type:',
       type: 'list',
-      choices: [
-        ...bumpChoices,
-        { name: 'custom', value: 'custom' }
-      ]
+      choices: [...bumpChoices, { name: 'custom', value: 'custom' }]
     },
     {
       name: 'customVersion',
@@ -69,11 +71,13 @@ const release = async() => {
 
   const version = customVersion || versions[bump]
 
-  const { yes } = await inquirer.prompt([{
-    name: 'yes',
-    message: `Confirm releasing ${version}?`,
-    type: 'confirm'
-  }])
+  const { yes } = await inquirer.prompt([
+    {
+      name: 'yes',
+      message: `Confirm releasing ${version}?`,
+      type: 'confirm'
+    }
+  ])
 
   if (yes) {
     await syncDeps({
@@ -100,12 +104,7 @@ const release = async() => {
     distTag = 'next'
   }
 
-  const lernaArgs = [
-    'publish',
-    version,
-    '--dist-tag',
-    distTag
-  ]
+  const lernaArgs = ['publish', version, '--dist-tag', distTag]
   // keep packages' minor version in sync
   if (releaseType !== 'patch') {
     lernaArgs.push('--force-publish')
@@ -126,10 +125,7 @@ const release = async() => {
     ],
     {
       stdio: 'inherit',
-      cwd: require('path').resolve(
-        __dirname,
-        '../packages/vue-cli-version-marker'
-      )
+      cwd: require('path').resolve(__dirname, '../packages/vue-cli-version-marker')
     }
   )
 }

@@ -1,6 +1,6 @@
 {
   "name": "vue-kit",
-  "version": "0.1.1",
+  "version": "1.0.10",
   "private": true,
   "scripts": {
     "postinstall": "cp -r githooks/ .git/hooks/",
@@ -19,6 +19,7 @@
     "child_process": "^1.0.2",
     "core-js": "^2.6.5",
     "execa": "^1.0.0",
+    "git-log-parser": "^1.2.0",
     "globby": "^9.2.0",
     "inquirer": "^6.3.1",
     "lerna": "^3.15.0",
