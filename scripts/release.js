@@ -90,6 +90,7 @@ const release = async() => {
     // buildEditorConfig()
 
     try {
+      console.log('version', version)
       await execa(`git tag -a 'v${version}' -m 'version v${version}'`)
       await execa(`git push --tags`)
       // await execa('git', ['add', '-A'], { stdio: 'inherit' })
@@ -99,8 +100,8 @@ const release = async() => {
     }
   }
 
-  const releaseType = semver.diff(curVersion, version)
-  console.log('releaseType', releaseType)
+  // const releaseType = semver.diff(curVersion, version)
+  // console.log('releaseType', releaseType)
   // let distTag = 'latest'
   // if (releaseType.startsWith('pre')) {
   //   distTag = 'next'
