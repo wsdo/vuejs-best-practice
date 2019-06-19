@@ -16,8 +16,10 @@
   },
   "dependencies": {
     "axios": "^0.19.0",
+    "child_process": "^1.0.2",
     "core-js": "^2.6.5",
     "execa": "^1.0.0",
+    "globby": "^9.2.0",
     "inquirer": "^6.3.1",
     "lerna": "^3.15.0",
     "semver": "^6.1.1",
