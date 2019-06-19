@@ -90,44 +90,47 @@ const release = async() => {
     // buildEditorConfig()
 
     try {
-      await execa('git', ['add', '-A'], { stdio: 'inherit' })
-      await execa('git', ['commit', '-m', 'chore: pre release sync'], { stdio: 'inherit' })
+      await execa(`git tag -a 'v${version}' -m 'version v${version}'`)
+      await execa(`git push --tags`)
+      // await execa('git', ['add', '-A'], { stdio: 'inherit' })
+      // await execa('git', ['commit', '-m', 'chore: pre release sync'], { stdio: 'inherit' })
     } catch (e) {
       // if it's a patch release, there may be no local deps to sync
     }
   }
 
   const releaseType = semver.diff(curVersion, version)
+  console.log('releaseType', releaseType)
+  // let distTag = 'latest'
+  // if (releaseType.startsWith('pre')) {
+  //   distTag = 'next'
+  // }
 
-  let distTag = 'latest'
-  if (releaseType.startsWith('pre')) {
-    distTag = 'next'
-  }
+  // const lernaArgs = ['publish', version, '--dist-tag', distTag]
+  // // keep packages' minor version in sync
+  // if (releaseType !== 'patch') {
+  //   lernaArgs.push('--force-publish')
+  // }
 
-  const lernaArgs = ['publish', version, '--dist-tag', distTag]
-  // keep packages' minor version in sync
-  if (releaseType !== 'patch') {
-    lernaArgs.push('--force-publish')
-  }
-
-  // await execa(require.resolve('lerna/cli'), lernaArgs, { stdio: 'inherit' })
-
+  // // await execa(require.resolve('lerna/cli'), lernaArgs, { stdio: 'inherit' })
+  // execSync(`git tag -a 'v${version}' -m 'version v${version}'`)
+  // execSync(`git push --tags`)
   // publish version marker after all other packages are published
-  await execa(
-    'npm',
-    [
-      'publish',
-      '--tag',
-      distTag,
-      // must specify registry url: https://github.com/lerna/lerna/issues/896#issuecomment-311894609
-      '--registry',
-      'https://registry.npmjs.org/'
-    ],
-    {
-      stdio: 'inherit',
-      cwd: require('path').resolve(__dirname, '../packages/vue-cli-version-marker')
-    }
-  )
+  // await execa(
+  //   'npm',
+  //   [
+  //     'publish',
+  //     '--tag',
+  //     distTag,
+  //     // must specify registry url: https://github.com/lerna/lerna/issues/896#issuecomment-311894609
+  //     '--registry',
+  //     'https://registry.npmjs.org/'
+  //   ],
+  //   {
+  //     stdio: 'inherit',
+  //     cwd: require('path').resolve(__dirname, '../packages/vue-cli-version-marker')
+  //   }
+  // )
 }
 
 release().catch(err => {
