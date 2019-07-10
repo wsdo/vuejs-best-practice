@@ -11,3 +11,4 @@
 * 编辑器统一配置 .editorconfig
 * .npmrc 设置国内镜像
 * 集成 polyfill 配置，兼容低版本浏览器
+* 自动发版： npm run tag
