@@ -1,16 +1,26 @@
 <template>
   <div :class="$style.hello">
-    <!-- <h1>{{ num }}</h1> -->
+    <h1>{{ count }}</h1>
+    <button @click="add">add</button>
   </div>
 </template>
 
 <script>
-
 import stark from './stark.css'
 export default {
   name: 'HelloWorld',
+  computed: {
+    count() {
+      return this.$stark.state.count
+    },
+  },
   created() {
-    console.log('stark',this.$stark.state)
+    console.log('stark', this.$stark.state)
+  },
+  methods: {
+    add(){
+      this.$stark.commit('increment')
+    }
   }
 }
 </script>
