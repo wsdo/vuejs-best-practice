@@ -9,6 +9,11 @@ export class Stark {
     this.commit = type => {
       return commit.call(this, type)
     }
+
+    forEachValue(options.getters, (getterFn, getterName) => {
+      registerGetter(this, getterName, getterFn)
+    })
+
     forEachValue(options.mutations, (mutationFn, mutationName) => {
       registerMutation(this, mutationName, mutationFn)
     })
@@ -27,7 +32,13 @@ export class Stark {
     this.mutations[type]()
   }
 }
-
+function registerGetter(store, getterName, getterFn) {
+  Object.defineProperty(store.getters, getterName, {
+    get: () => {
+      return getterFn(store.state)
+    },
+  })
+}
 function registerMutation(store, mutationName, mutationFn) {
   store.mutations[mutationName] = () => {
     mutationFn.call(store, store.state)
