@@ -1,13 +1,12 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    sasasassa211asdasa
+    VUEX-ADVANCE  【VUEX进阶】源码分析
     <Stark msg="Welcome to Your Vue.js App" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 import Stark from './components/Stark.vue'
 
 export default {
